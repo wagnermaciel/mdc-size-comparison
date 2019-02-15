@@ -19,3 +19,4 @@ $mat-checkbox-theme: mat-light-theme($mat-checkbox-primary, $mat-checkbox-accent
 @include cdk-a11y();
 @include mat-ripple();
 @include mat-checkbox-theme($mat-checkbox-theme);
+@include mat-checkbox-typography(mat-typography-config());

@@ -1,1 +1,108 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+@import '~@material/checkbox/mixins';
+@import '~@material/ripple/mixins';
+@import '~@material/theme/functions';
+// Plus imports for other components in your app.
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$mat-mdc-checkbox-primary: mat-palette($mat-indigo);
+$mat-mdc-checkbox-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$mat-mdc-checkbox-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$mat-mdc-checkbox-theme: mat-light-theme($mat-mdc-checkbox-primary, $mat-mdc-checkbox-accent, $mat-mdc-checkbox-warn);
+
+// TODO: import these normally
+// Mixins copy/pasted in since they are not currently included in material experimental bundle.
+@mixin mat-mdc-checkbox-theme($theme) {
+  $primary: mat-color(map-get($theme, primary));
+  $accent: mat-color(map-get($theme, accent));
+  $warn: mat-color(map-get($theme, warn));
+  $background: mat-color(map-get($theme, background), background);
+
+  $mdc-theme-primary: $primary !global;
+  $mdc-theme-on-primary: if(mdc-theme-contrast-tone($mdc-theme-primary) == "dark", #000, #fff) !global;
+
+  $mdc-theme-secondary: $accent !global;
+  $mdc-theme-on-secondary: if(mdc-theme-contrast-tone($mdc-theme-secondary) == "dark", #000, #fff) !global;
+
+  $mdc-theme-background: $background !global;
+
+  $mdc-theme-surface: $background !global;
+  $mdc-theme-on-surface: if(mdc-theme-contrast-tone($mdc-theme-surface) == "dark", #000, #fff) !global;
+
+  $mdc-theme-error: $warn !global;
+  $mdc-theme-on-error: if(mdc-theme-contrast-tone($mdc-theme-error) == "dark", #000, #fff) !global;
+
+  $mdc-theme-property-values: (
+    // Primary
+    primary: $mdc-theme-primary,
+    // Secondary
+    secondary: $mdc-theme-secondary,
+    // Background
+    background: $mdc-theme-background,
+    // Surface
+    surface: $mdc-theme-surface,
+    // Error
+    error: $mdc-theme-error,
+    on-primary: $mdc-theme-on-primary,
+    on-secondary: $mdc-theme-on-secondary,
+    on-surface: $mdc-theme-on-surface,
+    on-error: $mdc-theme-on-error,
+    // Text-primary on "background" background
+    text-primary-on-background: mdc-theme-ink-color-for-fill_(primary, $mdc-theme-background),
+    text-secondary-on-background: mdc-theme-ink-color-for-fill_(secondary, $mdc-theme-background),
+    text-hint-on-background: mdc-theme-ink-color-for-fill_(hint, $mdc-theme-background),
+    text-disabled-on-background: mdc-theme-ink-color-for-fill_(disabled, $mdc-theme-background),
+    text-icon-on-background: mdc-theme-ink-color-for-fill_(icon, $mdc-theme-background),
+    // Text-primary on "light" background
+    text-primary-on-light: mdc-theme-ink-color-for-fill_(primary, light),
+    text-secondary-on-light: mdc-theme-ink-color-for-fill_(secondary, light),
+    text-hint-on-light: mdc-theme-ink-color-for-fill_(hint, light),
+    text-disabled-on-light: mdc-theme-ink-color-for-fill_(disabled, light),
+    text-icon-on-light: mdc-theme-ink-color-for-fill_(icon, light),
+    // Text-primary on "dark" background
+    text-primary-on-dark: mdc-theme-ink-color-for-fill_(primary, dark),
+    text-secondary-on-dark: mdc-theme-ink-color-for-fill_(secondary, dark),
+    text-hint-on-dark: mdc-theme-ink-color-for-fill_(hint, dark),
+    text-disabled-on-dark: mdc-theme-ink-color-for-fill_(disabled, dark),
+    text-icon-on-dark: mdc-theme-ink-color-for-fill_(icon, dark)
+  ) !global;
+
+  $mdc-checkbox-mark-color: mdc-theme-prop-value(on-secondary) !global;
+  $mdc-checkbox-border-color: rgba(mdc-theme-prop-value(on-surface), .54) !global;
+  $mdc-checkbox-disabled-color: rgba(mdc-theme-prop-value(on-surface), .26) !global;
+  $mdc-checkbox-baseline-theme-color: secondary !global;
+
+  @include mdc-checkbox($query: color);
+
+  mat-mdc-checkbox {
+    &.mat-primary {
+      $mdc-checkbox-mark-color: mdc-theme-prop-value(on-primary) !global;
+      $mdc-checkbox-baseline-theme-color: primary !global;
+
+      @include mdc-checkbox($query: color);
+    }
+
+    &.mat-warn {
+      $mdc-checkbox-mark-color: mdc-theme-prop-value(on-error) !global;
+      $mdc-checkbox-baseline-theme-color: error !global;
+
+      @include mdc-checkbox($query: color);
+    }
+  }
+}
+
+@mixin mat-mdc-checkbox-typography($config) {
+  @include mdc-checkbox($query: typography);
+}
+
+@include mat-mdc-checkbox-theme($mat-mdc-checkbox-theme);
+@include mat-mdc-checkbox-typography(mat-typography-config());
