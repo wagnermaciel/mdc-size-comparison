@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$mat-checkbox-primary: mat-palette($mat-indigo);
+$mat-checkbox-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$mat-checkbox-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$mat-checkbox-theme: mat-light-theme($mat-checkbox-primary, $mat-checkbox-accent, $mat-checkbox-warn);
+
+@include cdk-a11y();
+@include mat-ripple();
+@include mat-checkbox-theme($mat-checkbox-theme);
