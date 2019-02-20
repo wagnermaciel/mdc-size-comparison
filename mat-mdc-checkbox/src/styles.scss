@@ -20,7 +20,7 @@ $mat-mdc-checkbox-warn: mat-palette($mat-red);
 $mat-mdc-checkbox-theme: mat-light-theme($mat-mdc-checkbox-primary, $mat-mdc-checkbox-accent, $mat-mdc-checkbox-warn);
 
 // TODO: import these normally
-// Mixins copy/pasted in since they are not currently included in material experimental bundle.
+//// Mixins copy/pasted in since they are not currently included in material experimental bundle.
 @mixin mat-mdc-checkbox-theme($theme) {
   $primary: mat-color(map-get($theme, primary));
   $accent: mat-color(map-get($theme, accent));
@@ -103,6 +103,24 @@ $mat-mdc-checkbox-theme: mat-light-theme($mat-mdc-checkbox-primary, $mat-mdc-che
 @mixin mat-mdc-checkbox-typography($config) {
   @include mdc-checkbox($query: typography);
 }
+//// Mixins copy/pasted in since they are not currently included in material experimental bundle.
+
+
+//// Core styles moved to mixin for easier measuring of JS vs CSS
+@import '@material/checkbox/mixins';
+@import '@material/feature-targeting/functions';
+
+// TODO: clean up when form-field is changed to feature-targeting
+@import '@material/form-field/mdc-form-field';
+
+@include mdc-checkbox(
+  $query: mdc-feature-without(mdc-feature-any(color, typography)));
+
+mat-mdc-checkbox label:empty {
+  display: none;
+}
+//// Core styles moved to mixin for easier measuring of JS vs CSS
+
 
 @include mat-mdc-checkbox-theme($mat-mdc-checkbox-theme);
 @include mat-mdc-checkbox-typography(mat-typography-config());
