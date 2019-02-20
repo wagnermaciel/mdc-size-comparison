@@ -109,7 +109,7 @@
 
 "@angular/cdk@file:../../material2/dist/releases/cdk/angular-cdk-7.3.2.tgz":
   version "7.3.2"
-  resolved "file:../../material2/dist/releases/cdk/angular-cdk-7.3.2.tgz#aceb5ed47a2a808af35035bbdc7a7e7f76ed3247"
+  resolved "file:../../material2/dist/releases/cdk/angular-cdk-7.3.2.tgz#cbb842adc2af9f45954feb448a6569a35bd3fdc0"
   dependencies:
     tslib "^1.7.1"
   optionalDependencies:
@@ -186,7 +186,7 @@
 
 "@angular/material@file:../../material2/dist/releases/material/angular-material-7.3.2.tgz":
   version "7.3.2"
-  resolved "file:../../material2/dist/releases/material/angular-material-7.3.2.tgz#0b74cee2a5152d651433708bcf39a30f417e5ff9"
+  resolved "file:../../material2/dist/releases/material/angular-material-7.3.2.tgz#2a2d444fb3c566d0c824de6b271cb765db4c9b70"
   dependencies:
     tslib "^1.7.1"
 

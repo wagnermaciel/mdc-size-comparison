@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "size": "ng build --prod --source-map && source-map-explorer --html dist/mat-mdc-checkbox/main.*.js > ../results/mat-mdc-checkbox-js-size.html; du -bc dist/mat-mdc-checkbox/{main.*.js,styles.*.css} | sed 's/total/mat-mdc-checkbox total\\n/' >>../results/size-summary.txt"
+    "size": "ng build --prod --source-map && source-map-explorer --html dist/mat-mdc-checkbox/main.*.js > ../results/mat-mdc-checkbox-js-size.html; du -bc dist/mat-mdc-checkbox/{main.*.js,styles.*.css} | sed 's/total/mat-mdc-checkbox total\\n/' >>../results/size-summary.txt; cp dist/mat-mdc-checkbox/main.*.js ../results/mat-mdc-checkbox-main.js; cp dist/mat-mdc-checkbox/styles.*.css ../results/mat-mdc-checkbox-styles.css"
   },
   "private": true,
   "dependencies": {
