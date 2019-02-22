@@ -2,7 +2,7 @@
 8532	dist/mat-checkbox/styles.d8774daee20296d2ea8a.css
 192360	mat-checkbox total
 
-182461	dist/mat-mdc-checkbox/main.a93a85478d12ade5cea9.js
-17449	dist/mat-mdc-checkbox/styles.8484dea83f56ac825105.css
-199910	mat-mdc-checkbox total
+190582	dist/mat-mdc-checkbox/main.4c96d137af36b758f8cd.js
+13499	dist/mat-mdc-checkbox/styles.ff92181fb38630fcc80a.css
+204081	mat-mdc-checkbox total
 
