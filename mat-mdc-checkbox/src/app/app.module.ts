@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatMdcCheckboxModule } from '@angular/material-experimental';
+import { MatCheckboxModule } from '@angular/material-experimental/mdc-checkbox';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    MatMdcCheckboxModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
