@@ -21,7 +21,7 @@ yarn start <project-name>
 
 ## To update the size results for a project
 ```sh
-yarn collec-size <project-name>
+yarn collect-size <project-name>
 ```
 
 ## To add a new project

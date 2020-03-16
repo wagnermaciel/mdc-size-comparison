@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "new": "scripts/new-project.sh",
-    "start": "scripts/fix-weback-importer.sh; ng serve",
-    "build": "scripts/fix-weback-importer.sh; ng build",
-    "collect-size": "scripts/fix-weback-importer.sh; scripts/collect-size.sh"
+    "start": "ng serve",
+    "build": "ng build",
+    "collect-size": "scripts/collect-size.sh",
+    "postinstall": "scripts/fix-weback-importer.sh"
   },
   "private": true,
   "dependencies": {
