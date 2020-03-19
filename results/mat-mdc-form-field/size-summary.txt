@@ -1,4 +1,0 @@
-278826	dist/mat-mdc-form-field/main-es2015.838ea4bf3e330ea5c6f5.js
-316027	dist/mat-mdc-form-field/main-es5.838ea4bf3e330ea5c6f5.js
-19103	dist/mat-mdc-form-field/styles.a701155fa4a3c09bcf66.css
-613956	total

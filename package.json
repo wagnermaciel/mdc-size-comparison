@@ -6,7 +6,7 @@
     "new": "scripts/new-project.sh",
     "start": "ng serve",
     "build": "ng build",
-    "collect-size": "scripts/collect-size.sh",
+    "collect-sizes": "scripts/collect-sizes.sh",
     "postinstall": "scripts/fix-weback-importer.sh"
   },
   "private": true,
