@@ -10,7 +10,10 @@ dist_dir="$workspace_root/dist"
 source_map_explorer="$workspace_root/node_modules/.bin/source-map-explorer"
 
 # Ensure results are based on versions shown in yarn.lock.
-yarn
+yarn --frozen-lockfile --non-interactive
+
+# Delete previous build.
+rm -rf "$dist_dir"
 
 # Write headers for the summary tsv file.
 echo -e "Component\tES5 (non-MDC)\tES5 (MDC)\tES2015 (non-MDC)\tES2015 (MDC)\tCSS (non-MDC)\tCSS (MDC)" > "$results_dir/size-summary.tsv"
@@ -23,8 +26,7 @@ do
   do
     echo "Collecting size data for $project..."
 
-    # Delete old builds and results.
-    rm -rf "${dist_dir:?}/$project"
+    # Delete old results for this project.
     rm -rf "${results_dir:?}/$project"
 
     # Build the project and create a directory for the results.
