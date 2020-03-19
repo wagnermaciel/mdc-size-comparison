@@ -19,14 +19,14 @@ yarn build <project-name>
 yarn start <project-name>
 ```
 
-## To update the size results for a project
-```sh
-yarn collect-size <project-name>
-```
-
 ## To add a new project
 ```sh
 yarn new <project-name>
+```
+
+## To update the size results for all projects
+```sh
+yarn collect-sizes
 ```
 
 After creating the project:

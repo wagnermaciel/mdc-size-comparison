@@ -1,4 +1,0 @@
-162792	dist/mat-checkbox/main-es2015.fd1e16960759bffc1864.js
-191159	dist/mat-checkbox/main-es5.fd1e16960759bffc1864.js
-2199	dist/mat-checkbox/styles.c58b61c5d36c10f750f0.css
-356150	total
