@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "new": "scripts/new-project.sh",
+    "new": "scripts/new-component.sh",
     "start": "ng serve",
     "build": "ng build",
     "collect-sizes": "scripts/collect-sizes.sh",

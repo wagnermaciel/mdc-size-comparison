@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   template: `<mat-checkbox>Check me</mat-checkbox>`,
   styles: []
 })
-export class AppComponent {}
+export class AppComponent { }

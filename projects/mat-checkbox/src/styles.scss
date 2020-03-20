@@ -1,10 +1,10 @@
 @import '@angular/material/theming';
 
-$mat-checkbox-primary: mat-palette($mat-indigo);
-$mat-checkbox-accent: mat-palette($mat-pink, A200, A100, A400);
-$mat-checkbox-theme: mat-light-theme($mat-checkbox-primary, $mat-checkbox-accent);
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
 
 @include cdk-a11y();
 @include mat-ripple();
-@include mat-checkbox-theme($mat-checkbox-theme);
+@include mat-checkbox-theme($theme);
 @include mat-checkbox-typography(mat-typography-config());

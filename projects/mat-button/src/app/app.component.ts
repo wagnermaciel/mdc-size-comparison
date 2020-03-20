@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<mat-checkbox>Check me</mat-checkbox>`,
+  template: `
+    <button mat-button>Click me!</button>
+  `,
   styles: []
 })
 export class AppComponent { }

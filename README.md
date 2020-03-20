@@ -19,23 +19,18 @@ yarn build <project-name>
 yarn start <project-name>
 ```
 
-## To add a new project
+## To add a new component
 ```sh
-yarn new <project-name>
+yarn new <component-name>
 ```
+
+The command will create 2 new projects under the `projects/` directory:
+- `mat-<component-name>` for the non-MDC based version
+- `mat-mdc-<component-name>` for the MDC based version
+
+After completion the command will output a lit of files with open TODOs that should be completed before committing.
 
 ## To update the size results for all projects
 ```sh
 yarn collect-sizes
 ```
-
-After creating the project:
-1. Open `angular.json` and edit the build config for the `<project-name>` project to include:
- ```js
-"stylePreprocessorOptions": {
-  "includePaths": ["node_modules/"]
-}
-```
-2. Open `projects/<project-name>/src/app/app.component.ts` and add the template for your component.
-3. Open `projects/<project-name>/src/app/app.module.ts` and add the module for your component.
-4. Open `projects/<project-name>/src/styles.scss` and add the theme styles for your component.
