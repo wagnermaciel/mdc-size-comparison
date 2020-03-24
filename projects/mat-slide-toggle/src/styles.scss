@@ -7,5 +7,5 @@ $theme: mat-light-theme($primary, $accent);
 @include cdk-a11y();
 @include mat-ripple();
 @include mat-ripple-theme($theme);
-@include mat-checkbox-theme($theme);
-@include mat-checkbox-typography(mat-typography-config());
+@include mat-slide-toggle-theme($theme);
+@include mat-slide-toggle-typography(mat-typography-config());

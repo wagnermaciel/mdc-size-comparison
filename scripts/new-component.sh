@@ -32,7 +32,7 @@ perl -i -0pe "s/((\s+)template: \`).*(\`)/\1\2  <!-- TODO: Add template for MDC 
 perl -i -0pe "s/\n\s+title =.*;\n/ /s" "$projects_dir/mat-mdc-$1/src/app/app.component.ts"
 
 # Add TODOs to styles files and remove unnecessary code.
-echo "
+echo -n "\
 @import '@angular/material/theming';
 
 \$primary: mat-palette(\$mat-indigo);
@@ -46,7 +46,7 @@ echo "
 //  - any other styles needed for the component to render normally
 " > "$projects_dir/mat-$1/src/styles.scss"
 
-echo "
+echo -n "\
 @import '@angular/material/theming';
 @import '@angular/material-experimental/mdc-theming/all-theme';
 
