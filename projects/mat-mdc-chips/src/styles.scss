@@ -1,0 +1,11 @@
+@import '@angular/material/theming';
+@import '@angular/material-experimental/mdc-theming/all-theme';
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+
+@include mat-ripple();
+@include mat-ripple-theme($theme);
+@include mat-mdc-chips-theme($theme);
+@include mat-mdc-chips-typography(mat-typography-config());
