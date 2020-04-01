@@ -1,0 +1,10 @@
+@import '@angular/material/theming';
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+
+@include mat-ripple();
+@include mat-ripple-theme($theme);
+@include mat-tabs-theme($theme);
+@include mat-tabs-typography(mat-typography-config());
