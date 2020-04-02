@@ -16,7 +16,17 @@ yarn --frozen-lockfile --non-interactive
 rm -rf "$dist_dir"
 
 # Write headers for the summary tsv file.
-echo -e "Component\tES5 (non-MDC)\tES5 (MDC)\tES2015 (non-MDC)\tES2015 (MDC)\tCSS (non-MDC)\tCSS (MDC)" > "$results_dir/size-summary.tsv"
+echo -e "\
+Component\t\
+ES5 (non-MDC)\t\
+ES5 (MDC)\t\
+ES2015 (non-MDC)\t\
+ES2015 (MDC)\t\
+Theme CSS (non-MDC)\t\
+Theme CSS (MDC)\t\
+Base CSS (non-MDC)\t\
+Base CSS (MDC)\
+" > "$results_dir/size-summary.tsv"
 
 # Loop over each component and gather results (assumes each component has a project named mat-mdc-<component>).
 for component in $(basename -a "$projects_dir"/mat-mdc-* | sed "s/mat-mdc-//g")
@@ -33,25 +43,45 @@ do
     yarn ng build "$project" --prod --source-map
     mkdir -p "$results_dir/$project"
 
-    # Generate treemaps for ES5 and ES2015 JS.
-    "$source_map_explorer" "$dist_dir/$project"/main-es5*.js --html "$results_dir/$project/js-size-es5-visualized.html"
-    "$source_map_explorer" "$dist_dir/$project"/main-es2015*.js --html "$results_dir/$project/js-size-es2015-visualized.html"
-
     # Copy over the built JS and CSS to the results folder for manual analysis if needed.
     mkdir -p "$results_dir/$project/chunks/"
-    mkdir -p "$results_dir/$project/styles/"
     cp "$dist_dir/$project"/main*.js "$results_dir/$project/chunks/"
-    cp "$dist_dir/$project"/styles*.css "$results_dir/$project/styles/"
+    cp "$dist_dir/$project"/styles*.css "$results_dir/$project/chunks/"
+
+    # Create a directory to save the more granularly split up code.
+    mkdir -p "$results_dir/$project/split"
+
+    # Extract CSS inlined in the ES5 JS, e.g. styles:["<CSS_CODE>"], and save it. (Should be same in ES2015).
+    {
+      grep -oP "(?<=styles:\[\").*?(?=\"])" "$dist_dir/$project"/main-es5*.js || true
+      grep -oP "(?<=styles:\[').*?(?='])" "$dist_dir/$project"/main-es5*.js || true
+    } | tr -d "\n" > "$results_dir/$project/split/base.css"
+
+    # Copy over the unchanged theme CSS.
+    cp "$dist_dir/$project"/styles*.css "$results_dir/$project/split/theme.css"
+
+    # Do some additional processing for both the ES5 and ES2015 code.
+    for js_version in "es5" "es2015"
+    do
+      # Generate treemap for output JS.
+      "$source_map_explorer" "$dist_dir/$project/main-$js_version"*.js --html "$results_dir/$project/js-size-$js_version-visualized.html"
+
+      # Delete the inlined CSS from the JS bundle and save it.
+      sed -E "s/styles:\[\"(.*?)\"]/styles:[\"\"]/g" "$dist_dir/$project/main-$js_version"*.js |
+        sed -E "s/styles:\['(.*?)']/styles:[\"\"]/g" > "$results_dir/$project/split/main-$js_version.js"
+    done
   done
 
   # Add the size info for the component to the summary tsv.
   {
     echo "$component"
-    du -b "$dist_dir/mat-$component"/main-es5*.js | cut -f 1
-    du -b "$dist_dir/mat-mdc-$component"/main-es5*.js | cut -f 1
-    du -b "$dist_dir/mat-$component"/main-es2015*.js | cut -f 1
-    du -b "$dist_dir/mat-mdc-$component"/main-es2015*.js | cut -f 1
-    du -b "$dist_dir/mat-$component"/styles*.css | cut -f 1
-    du -b "$dist_dir/mat-mdc-$component"/styles*.css | cut -f 1
+    du -b "$results_dir/mat-$component/split/main-es5.js" | cut -f 1
+    du -b "$results_dir/mat-mdc-$component/split/main-es5.js" | cut -f 1
+    du -b "$results_dir/mat-$component/split/main-es2015.js" | cut -f 1
+    du -b "$results_dir/mat-mdc-$component/split/main-es2015.js" | cut -f 1
+    du -b "$results_dir/mat-$component/split/theme.css" | cut -f 1
+    du -b "$results_dir/mat-mdc-$component/split/theme.css" | cut -f 1
+    du -b "$results_dir/mat-$component/split/base.css" | cut -f 1
+    du -b "$results_dir/mat-mdc-$component/split/base.css" | cut -f 1
   } | paste -sd "\t" >> "$results_dir/size-summary.tsv"
 done
