@@ -1,0 +1,37 @@
+@import '@angular/material/theming';
+@import '@angular/material-experimental/mdc-theming/all-theme';
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+$typography: mat-typography-config();
+
+@include mat-core();
+
+@include mat-mdc-button-theme($theme);
+@include mat-mdc-card-theme($theme);
+@include mat-mdc-checkbox-theme($theme);
+@include mat-mdc-chips-theme($theme);
+@include mat-mdc-form-field-theme($theme);
+@include mat-mdc-input-theme($theme);
+@include mat-mdc-menu-theme($theme);
+@include mat-mdc-progress-bar-theme($theme);
+@include mat-mdc-radio-theme($theme);
+@include mat-mdc-slide-toggle-theme($theme);
+@include mat-mdc-slider-theme($theme);
+@include mat-mdc-table-theme($theme);
+@include mat-mdc-tabs-theme($theme);
+
+@include mat-mdc-button-typography($typography);
+@include mat-mdc-card-typography($typography);
+@include mat-mdc-checkbox-typography($typography);
+@include mat-mdc-chips-typography($typography);
+@include mat-mdc-form-field-typography($typography);
+@include mat-mdc-input-typography($typography);
+@include mat-mdc-menu-typography($typography);
+@include mat-mdc-progress-bar-typography($typography);
+@include mat-mdc-radio-typography($typography);
+@include mat-mdc-slide-toggle-typography($typography);
+@include mat-mdc-slider-typography($typography);
+@include mat-mdc-table-typography($typography);
+@include mat-mdc-tabs-typography($typography);

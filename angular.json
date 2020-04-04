@@ -2814,6 +2814,222 @@
           }
         }
       }
+    },
+    "mat-app-kitchen-sink": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "projects/mat-app-kitchen-sink",
+      "sourceRoot": "projects/mat-app-kitchen-sink/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/mat-app-kitchen-sink",
+            "index": "projects/mat-app-kitchen-sink/src/index.html",
+            "main": "projects/mat-app-kitchen-sink/src/main.ts",
+            "polyfills": "projects/mat-app-kitchen-sink/src/polyfills.ts",
+            "tsConfig": "projects/mat-app-kitchen-sink/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/mat-app-kitchen-sink/src/favicon.ico",
+              "projects/mat-app-kitchen-sink/src/assets"
+            ],
+            "styles": [
+              "projects/mat-app-kitchen-sink/src/styles.scss"
+            ],
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/mat-app-kitchen-sink/src/environments/environment.ts",
+                  "with": "projects/mat-app-kitchen-sink/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mat-app-kitchen-sink:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mat-app-kitchen-sink:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mat-app-kitchen-sink:build"
+          }
+        }
+      }
+    },
+    "mat-mdc-app-kitchen-sink": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "projects/mat-mdc-app-kitchen-sink",
+      "sourceRoot": "projects/mat-mdc-app-kitchen-sink/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/mat-mdc-app-kitchen-sink",
+            "index": "projects/mat-mdc-app-kitchen-sink/src/index.html",
+            "main": "projects/mat-mdc-app-kitchen-sink/src/main.ts",
+            "polyfills": "projects/mat-mdc-app-kitchen-sink/src/polyfills.ts",
+            "tsConfig": "projects/mat-mdc-app-kitchen-sink/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/mat-mdc-app-kitchen-sink/src/favicon.ico",
+              "projects/mat-mdc-app-kitchen-sink/src/assets"
+            ],
+            "styles": [
+              "projects/mat-mdc-app-kitchen-sink/src/styles.scss"
+            ],
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/mat-mdc-app-kitchen-sink/src/environments/environment.ts",
+                  "with": "projects/mat-mdc-app-kitchen-sink/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mat-mdc-app-kitchen-sink:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mat-mdc-app-kitchen-sink:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mat-mdc-app-kitchen-sink:build"
+          }
+        }
+      }
     }
   },
   "defaultProject": "mat-checkbox"
