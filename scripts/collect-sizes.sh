@@ -75,13 +75,13 @@ do
   # Add the size info for the component to the summary tsv.
   {
     echo "$component"
-    du -b "$results_dir/mat-$component/split/main-es5.js" | cut -f 1
-    du -b "$results_dir/mat-mdc-$component/split/main-es5.js" | cut -f 1
-    du -b "$results_dir/mat-$component/split/main-es2015.js" | cut -f 1
-    du -b "$results_dir/mat-mdc-$component/split/main-es2015.js" | cut -f 1
-    du -b "$results_dir/mat-$component/split/theme.css" | cut -f 1
-    du -b "$results_dir/mat-mdc-$component/split/theme.css" | cut -f 1
-    du -b "$results_dir/mat-$component/split/base.css" | cut -f 1
-    du -b "$results_dir/mat-mdc-$component/split/base.css" | cut -f 1
+    stat -c %s "$results_dir/mat-$component/split/main-es5.js"
+    stat -c %s "$results_dir/mat-mdc-$component/split/main-es5.js"
+    stat -c %s "$results_dir/mat-$component/split/main-es2015.js"
+    stat -c %s "$results_dir/mat-mdc-$component/split/main-es2015.js"
+    stat -c %s "$results_dir/mat-$component/split/theme.css"
+    stat -c %s "$results_dir/mat-mdc-$component/split/theme.css"
+    stat -c %s "$results_dir/mat-$component/split/base.css"
+    stat -c %s "$results_dir/mat-mdc-$component/split/base.css"
   } | paste -sd "\t" >> "$results_dir/size-summary.tsv"
 done
