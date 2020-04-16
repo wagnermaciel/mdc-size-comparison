@@ -18,8 +18,6 @@ rm -rf "$dist_dir"
 # Write headers for the summary tsv file.
 echo -e "\
 Component\t\
-ES5 (non-MDC)\t\
-ES5 (MDC)\t\
 ES2015 (non-MDC)\t\
 ES2015 (MDC)\t\
 Theme CSS (non-MDC)\t\
@@ -51,37 +49,31 @@ do
     # Create a directory to save the more granularly split up code.
     mkdir -p "$results_dir/$project/split"
 
-    # Extract CSS inlined in the ES5 JS, e.g. styles:["<CSS_CODE>"], and save it. (Should be same in ES2015).
+    # Extract CSS inlined in the ES2015 JS, e.g. styles:["<CSS_CODE>"], and save it.
     {
-      grep -oP "(?<=styles:\[\").*?(?=\"])" "$dist_dir/$project"/main-es5*.js || true
-      grep -oP "(?<=styles:\[').*?(?='])" "$dist_dir/$project"/main-es5*.js || true
+      grep -oP "(?<=styles:\[\").*?(?=\"])" "$dist_dir/$project"/main*.js || true
+      grep -oP "(?<=styles:\[').*?(?='])" "$dist_dir/$project"/main*.js || true
     } | tr -d "\n" > "$results_dir/$project/split/base.css"
+
+    # Delete the inlined CSS from the JS bundle and save it.
+    sed -E "s/styles:\[\"(.*?)\"]/styles:[\"\"]/g" "$dist_dir/$project"/main*.js |
+      sed -E "s/styles:\['(.*?)']/styles:[\"\"]/g" > "$results_dir/$project/split/main-es2015.js"
 
     # Copy over the unchanged theme CSS.
     cp "$dist_dir/$project"/styles*.css "$results_dir/$project/split/theme.css"
 
-    # Do some additional processing for both the ES5 and ES2015 code.
-    for js_version in "es5" "es2015"
-    do
-      # Generate treemap for output JS.
-      "$source_map_explorer" "$dist_dir/$project/main-$js_version"*.js --html "$results_dir/$project/js-size-$js_version-visualized.html"
-
-      # Delete the inlined CSS from the JS bundle and save it.
-      sed -E "s/styles:\[\"(.*?)\"]/styles:[\"\"]/g" "$dist_dir/$project/main-$js_version"*.js |
-        sed -E "s/styles:\['(.*?)']/styles:[\"\"]/g" > "$results_dir/$project/split/main-$js_version.js"
-    done
+    # Generate treemap for output JS.
+    "$source_map_explorer" "$dist_dir/$project"/main*.js --html "$results_dir/$project/js-size-es2015-visualized.html"
   done
 
   # Add the size info for the component to the summary tsv.
   {
     echo "$component"
-    du -b "$results_dir/mat-$component/split/main-es5.js" | cut -f 1
-    du -b "$results_dir/mat-mdc-$component/split/main-es5.js" | cut -f 1
-    du -b "$results_dir/mat-$component/split/main-es2015.js" | cut -f 1
-    du -b "$results_dir/mat-mdc-$component/split/main-es2015.js" | cut -f 1
-    du -b "$results_dir/mat-$component/split/theme.css" | cut -f 1
-    du -b "$results_dir/mat-mdc-$component/split/theme.css" | cut -f 1
-    du -b "$results_dir/mat-$component/split/base.css" | cut -f 1
-    du -b "$results_dir/mat-mdc-$component/split/base.css" | cut -f 1
+    stat -c %s "$results_dir/mat-$component/split/main-es2015.js"
+    stat -c %s "$results_dir/mat-mdc-$component/split/main-es2015.js"
+    stat -c %s "$results_dir/mat-$component/split/theme.css"
+    stat -c %s "$results_dir/mat-mdc-$component/split/theme.css"
+    stat -c %s "$results_dir/mat-$component/split/base.css"
+    stat -c %s "$results_dir/mat-mdc-$component/split/base.css"
   } | paste -sd "\t" >> "$results_dir/size-summary.tsv"
 done

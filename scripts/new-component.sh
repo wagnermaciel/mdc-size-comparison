@@ -31,6 +31,18 @@ perl -i -0pe "s/\n\s+title =.*;\n/ /s" "$projects_dir/mat-$1/src/app/app.compone
 perl -i -0pe "s/((\s+)template: \`).*(\`)/\1\2  <!-- TODO: Add template for MDC based $1. -->\2\3/s" "$projects_dir/mat-mdc-$1/src/app/app.component.ts"
 perl -i -0pe "s/\n\s+title =.*;\n/ /s" "$projects_dir/mat-mdc-$1/src/app/app.component.ts"
 
+# Update the browserslist to only include evergreen browsers
+echo -n "\
+# This file is used by the build system to adjust CSS and JS output to support the specified browsers below.
+# For additional information regarding the format and rule options, please see:
+# https://github.com/browserslist/browserslist#queries
+
+# You can see what browsers were selected by your queries by running:
+#   npx browserslist
+
+> 3%
+" | tee "$projects_dir/mat-$1/browserslist" > "$projects_dir/mat-mdc-$1/browserslist"
+
 # Add TODOs to styles files and remove unnecessary code.
 echo -n "\
 @import '@angular/material/theming';
