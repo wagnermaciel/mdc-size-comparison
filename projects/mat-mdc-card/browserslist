@@ -5,4 +5,15 @@
 # You can see what browsers were selected by your queries by running:
 #   npx browserslist
 
-> 3%
+# ------------------------------------------
+# Make sure this file matches with the supported browsers
+# in Angular Material. See: https://github.com/angular/components/blob/master/README.md
+# ------------------------------------------
+
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 ChromeAndroid versions
+last 2 ios_saf versions
+last 1 Explorer versions
+last 1 Edge versions

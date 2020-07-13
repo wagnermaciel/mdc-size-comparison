@@ -37,6 +37,9 @@ do
     # Delete old results for this project.
     rm -rf "${results_dir:?}/$project"
 
+    # Setup browserslist from root.
+    cp ${workspace_root}/browserslist ${projects_dir}/${project}/browserslist
+
     # Build the project and create a directory for the results.
     yarn ng build "$project" --prod --source-map
     mkdir -p "$results_dir/$project"
@@ -51,19 +54,20 @@ do
 
     # Extract CSS inlined in the ES2015 JS, e.g. styles:["<CSS_CODE>"], and save it.
     {
-      grep -oP "(?<=styles:\[\").*?(?=\"])" "$dist_dir/$project"/main*.js || true
-      grep -oP "(?<=styles:\[').*?(?='])" "$dist_dir/$project"/main*.js || true
+      grep -oP "(?<=styles:\[\").*?(?=\"])" "$dist_dir/$project"/main-es2015*.js || true
+      grep -oP "(?<=styles:\[').*?(?='])" "$dist_dir/$project"/main-es2015*.js || true
     } | tr -d "\n" > "$results_dir/$project/split/base.css"
 
     # Delete the inlined CSS from the JS bundle and save it.
-    sed -E "s/styles:\[\"(.*?)\"]/styles:[\"\"]/g" "$dist_dir/$project"/main*.js |
+    sed -E "s/styles:\[\"(.*?)\"]/styles:[\"\"]/g" "$dist_dir/$project"/main-es2015*.js |
       sed -E "s/styles:\['(.*?)']/styles:[\"\"]/g" > "$results_dir/$project/split/main-es2015.js"
 
     # Copy over the unchanged theme CSS.
     cp "$dist_dir/$project"/styles*.css "$results_dir/$project/split/theme.css"
 
     # Generate treemap for output JS.
-    "$source_map_explorer" "$dist_dir/$project"/main*.js --html "$results_dir/$project/js-size-es2015-visualized.html"
+    "$source_map_explorer" "$dist_dir/$project"/main-es2015*.js --html \
+      "$results_dir/$project/js-size-es2015-visualized.html"
   done
 
   # Add the size info for the component to the summary tsv.
