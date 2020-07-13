@@ -1,5 +1,8 @@
 @import '@angular/material/theming';
 @import '@angular/material-experimental/mdc-theming/all-theme';
+// Need to import the MDC theme explicitly as it is not included the
+// default all-theme.
+@import '@angular/material-experimental/mdc-slider/slider-theme';
 
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-pink, A200, A100, A400);
