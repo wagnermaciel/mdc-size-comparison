@@ -39,6 +39,9 @@ do
 
     # Setup browserslist from root.
     cp ${workspace_root}/browserslist ${projects_dir}/${project}/browserslist
+    # Newly generated projects might have a `.browserslistrc` file. We need to remove
+    # that one as it will otherwise conflict with the copied `browserslist` file.
+    rm ${projects_dir}/${project}/.browserslistrc
 
     # Build the project and create a directory for the results.
     yarn ng build "$project" --prod --source-map
