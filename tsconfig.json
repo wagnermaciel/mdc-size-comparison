@@ -1,23 +1,38 @@
+/*
+  This is a "Solution Style" tsconfig.json file, and is used by editors and
+  TypeScript’s language server to improve development experience. It is not
+  intended to be used to perform a compilation. To learn more about this file,
+  see: https://angular.io/config/solution-tsconfig.
+*/
+
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  }
+  "files": [],
+  "references": [
+    {"path": "./projects/mat-app-forms/tsconfig.app.json"},
+    {"path": "./projects/mat-app-kitchen-sink/tsconfig.app.json"},
+    {"path": "./projects/mat-button/tsconfig.app.json"},
+    {"path": "./projects/mat-card/tsconfig.app.json"},
+    {"path": "./projects/mat-checkbox/tsconfig.app.json"},
+    {"path": "./projects/mat-chips/tsconfig.app.json"},
+    {"path": "./projects/mat-form-field/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-button/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-card/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-checkbox/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-chips/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-form-field/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-menu/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-progress-bar/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-radio/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-slide-toggle/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-slider/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-table/tsconfig.app.json"},
+    {"path": "./projects/mat-mdc-tabs/tsconfig.app.json"},
+    {"path": "./projects/mat-menu/tsconfig.app.json"},
+    {"path": "./projects/mat-progress-bar/tsconfig.app.json"},
+    {"path": "./projects/mat-radio/tsconfig.app.json"},
+    {"path": "./projects/mat-slide-toggle/tsconfig.app.json"},
+    {"path": "./projects/mat-slider/tsconfig.app.json"},
+    {"path": "./projects/mat-table/tsconfig.app.json"},
+    {"path": "./projects/mat-tabs/tsconfig.app.json"}
+  ]
 }
