@@ -35,6 +35,18 @@
     {"path": "./projects/mat-slide-toggle/tsconfig.app.json"},
     {"path": "./projects/mat-slider/tsconfig.app.json"},
     {"path": "./projects/mat-table/tsconfig.app.json"},
-    {"path": "./projects/mat-tabs/tsconfig.app.json"}
+    {"path": "./projects/mat-tabs/tsconfig.app.json"},
+    {
+      "path": "./projects/mat-progress-spinner/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/mat-mdc-progress-spinner/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/mat-snack-bar/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/mat-mdc-snack-bar/tsconfig.app.json"
+    }
   ]
 }
