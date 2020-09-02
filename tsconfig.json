@@ -47,6 +47,12 @@
     },
     {
       "path": "./projects/mat-mdc-snack-bar/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/mat-list/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/mat-mdc-list/tsconfig.app.json"
     }
   ]
 }

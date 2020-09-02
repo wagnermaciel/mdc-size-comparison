@@ -3678,6 +3678,218 @@
           }
         }
       }
+    },
+    "mat-list": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "projects/mat-list",
+      "sourceRoot": "projects/mat-list/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/mat-list",
+            "index": "projects/mat-list/src/index.html",
+            "main": "projects/mat-list/src/main.ts",
+            "polyfills": "projects/mat-list/src/polyfills.ts",
+            "tsConfig": "projects/mat-list/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/mat-list/src/favicon.ico",
+              "projects/mat-list/src/assets"
+            ],
+            "styles": [
+              "projects/mat-list/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules/"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/mat-list/src/environments/environment.ts",
+                  "with": "projects/mat-list/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mat-list:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mat-list:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mat-list:build"
+          }
+        }
+      }
+    },
+    "mat-mdc-list": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "projects/mat-mdc-list",
+      "sourceRoot": "projects/mat-mdc-list/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/mat-mdc-list",
+            "index": "projects/mat-mdc-list/src/index.html",
+            "main": "projects/mat-mdc-list/src/main.ts",
+            "polyfills": "projects/mat-mdc-list/src/polyfills.ts",
+            "tsConfig": "projects/mat-mdc-list/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/mat-mdc-list/src/favicon.ico",
+              "projects/mat-mdc-list/src/assets"
+            ],
+            "styles": [
+              "projects/mat-mdc-list/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules/"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/mat-mdc-list/src/environments/environment.ts",
+                  "with": "projects/mat-mdc-list/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mat-mdc-list:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mat-mdc-list:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mat-mdc-list:build"
+          }
+        }
+      }
     }
   },
   "defaultProject": "mat-checkbox"
