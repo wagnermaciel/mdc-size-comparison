@@ -1,0 +1,11 @@
+@import '@angular/material/theming';
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+
+@include mat-ripple();
+@include mat-list-typography(mat-typography-config());
+@include mat-list-theme($theme);
+@include mat-pseudo-checkbox-theme($theme);
+@include mat-ripple-theme($theme);
