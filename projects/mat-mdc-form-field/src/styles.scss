@@ -1,9 +1,14 @@
-@import '@angular/material/theming';
-@import '@angular/material-experimental/mdc-theming/all-theme';
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as mat-mdc;
 
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
-$theme: mat-light-theme($primary, $accent);
+$primary: mat.define-palette(mat.$indigo-palette);
+$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+  )
+));
 
-@include mat-mdc-form-field-theme($theme);
-@include mat-mdc-form-field-typography(mat-typography-config());
+@include mat-mdc.mdc-form-field-theme($theme);
+@include mat-mdc.mdc-form-field-typography(mat.define-typography-config());

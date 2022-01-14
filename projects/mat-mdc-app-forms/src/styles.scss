@@ -1,23 +1,28 @@
-@import '@angular/material/theming';
-@import '@angular/material-experimental/mdc-theming/all-theme';
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as mat-mdc;
 
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
-$theme: mat-light-theme($primary, $accent);
-$typography: mat-typography-config();
+$primary: mat.define-palette(mat.$indigo-palette);
+$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+  )
+));
+$typography: mat.define-typography-config();
 
-@include mat-core();
+@include mat.core();
 
-@include mat-mdc-button-theme($theme);
-@include mat-mdc-checkbox-theme($theme);
-@include mat-mdc-form-field-theme($theme);
-@include mat-mdc-input-theme($theme);
-@include mat-mdc-radio-theme($theme);
-@include mat-mdc-slide-toggle-theme($theme);
+@include mat-mdc.mdc-button-theme($theme);
+@include mat-mdc.mdc-checkbox-theme($theme);
+@include mat-mdc.mdc-form-field-theme($theme);
+@include mat-mdc.mdc-input-theme($theme);
+@include mat-mdc.mdc-radio-theme($theme);
+@include mat-mdc.mdc-slide-toggle-theme($theme);
 
-@include mat-mdc-button-typography($typography);
-@include mat-mdc-checkbox-typography($typography);
-@include mat-mdc-form-field-typography($typography);
-@include mat-mdc-input-typography($typography);
-@include mat-mdc-radio-typography($typography);
-@include mat-mdc-slide-toggle-typography($typography);
+@include mat-mdc.mdc-button-typography($typography);
+@include mat-mdc.mdc-checkbox-typography($typography);
+@include mat-mdc.mdc-form-field-typography($typography);
+@include mat-mdc.mdc-input-typography($typography);
+@include mat-mdc.mdc-radio-typography($typography);
+@include mat-mdc.mdc-slide-toggle-typography($typography);

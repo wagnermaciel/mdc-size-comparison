@@ -1,22 +1,27 @@
-@import '@angular/material/theming';
+@use '@angular/material' as mat;
 
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
-$theme: mat-light-theme($primary, $accent);
-$typography: mat-typography-config();
+$primary: mat.define-palette(mat.$indigo-palette);
+$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+  )
+));
+$typography: mat.define-typography-config();
 
-@include mat-core();
+@include mat.core();
 
-@include mat-button-theme($theme);
-@include mat-checkbox-theme($theme);
-@include mat-form-field-theme($theme);
-@include mat-input-theme($theme);
-@include mat-radio-theme($theme);
-@include mat-slide-toggle-theme($theme);
+@include mat.button-theme($theme);
+@include mat.checkbox-theme($theme);
+@include mat.form-field-theme($theme);
+@include mat.input-theme($theme);
+@include mat.radio-theme($theme);
+@include mat.slide-toggle-theme($theme);
 
-@include mat-button-typography($typography);
-@include mat-checkbox-typography($typography);
-@include mat-form-field-typography($typography);
-@include mat-input-typography($typography);
-@include mat-radio-typography($typography);
-@include mat-slide-toggle-typography($typography);
+@include mat.button-typography($typography);
+@include mat.checkbox-typography($typography);
+@include mat.form-field-typography($typography);
+@include mat.input-typography($typography);
+@include mat.radio-typography($typography);
+@include mat.slide-toggle-typography($typography);
