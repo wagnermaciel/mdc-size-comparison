@@ -44,7 +44,7 @@ do
     rm -f ${projects_dir}/${project}/.browserslistrc
 
     # Build the project and create a directory for the results.
-    yarn ng build "$project" --prod --source-map
+    yarn ng build "$project" --configuration production --source-map
     mkdir -p "$results_dir/$project"
 
     # Copy over the built JS and CSS to the results folder for manual analysis if needed.
@@ -57,27 +57,27 @@ do
 
     # Extract CSS inlined in the ES2015 JS, e.g. styles:["<CSS_CODE>"], and save it.
     {
-      grep -oP "(?<=styles:\[\").*?(?=\"])" "$dist_dir/$project"/main-es2015*.js || true
-      grep -oP "(?<=styles:\[').*?(?='])" "$dist_dir/$project"/main-es2015*.js || true
+      grep -oP "(?<=styles:\[\").*?(?=\"])" "$dist_dir/$project"/main.*.js || true
+      grep -oP "(?<=styles:\[').*?(?='])" "$dist_dir/$project"/main.*.js || true
     } | tr -d "\n" > "$results_dir/$project/split/base.css"
 
     # Delete the inlined CSS from the JS bundle and save it.
-    sed -E "s/styles:\[\"(.*?)\"]/styles:[\"\"]/g" "$dist_dir/$project"/main-es2015*.js |
-      sed -E "s/styles:\['(.*?)']/styles:[\"\"]/g" > "$results_dir/$project/split/main-es2015.js"
+    sed -E "s/styles:\[\"(.*?)\"]/styles:[\"\"]/g" "$dist_dir/$project"/main.*.js |
+      sed -E "s/styles:\['(.*?)']/styles:[\"\"]/g" > "$results_dir/$project/split/main.js"
 
     # Copy over the unchanged theme CSS.
     cp "$dist_dir/$project"/styles*.css "$results_dir/$project/split/theme.css"
 
     # Generate treemap for output JS.
-    "$source_map_explorer" "$dist_dir/$project"/main-es2015*.js --html \
-      "$results_dir/$project/js-size-es2015-visualized.html"
+    "$source_map_explorer" "$dist_dir/$project"/main.*.js --html \
+      "$results_dir/$project/js-size-visualized.html"
   done
 
   # Add the size info for the component to the summary tsv.
   {
     echo "$component"
-    stat -c %s "$results_dir/mat-$component/split/main-es2015.js"
-    stat -c %s "$results_dir/mat-mdc-$component/split/main-es2015.js"
+    stat -c %s "$results_dir/mat-$component/split/main.js"
+    stat -c %s "$results_dir/mat-mdc-$component/split/main.js"
     stat -c %s "$results_dir/mat-$component/split/theme.css"
     stat -c %s "$results_dir/mat-mdc-$component/split/theme.css"
     stat -c %s "$results_dir/mat-$component/split/base.css"
